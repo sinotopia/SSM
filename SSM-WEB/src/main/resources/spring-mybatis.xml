@@ -18,7 +18,7 @@
     <!--    <import resource="classpath:META-INF/cxf/cxf.xml"/>
         <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
         &lt;!&ndash; 自动扫描webService &ndash;&gt;
-        <context:component-scan base-package="com.crossoverJie.cxf" />
+        <context:component-scan base-packacom.sinotopiarJie.cxf" />
         &lt;!&ndash; 定义webservice的发布接口  &ndash;&gt;
         <jaxws:endpoint
                 implementor="#helloWorld"
@@ -26,7 +26,7 @@
         ></jaxws:endpoint>-->
 
     <!-- 自动扫描 -->
-    <context:component-scan base-package="com.crossoverJie" />
+    <context:component-scan base-package="com.sinotopia" />
     <!-- 引入配置文件 -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -98,7 +98,7 @@
     </bean>
 
 
-    <bean id="dataSource" class="com.crossoverJie.util.DynamicDataSource">
+    <bean id="dataSource" class="com.sinotopia.util.DynamicDataSource">
         <property name="targetDataSources">
             <map key-type="java.lang.String">
                 <entry key="ssm1DataSource" value-ref="ssm1DataSource"/>
@@ -123,7 +123,7 @@
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.crossoverJie.dao" />
+        <property name="basePackage" value="com.sinotopia.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
 
@@ -135,7 +135,7 @@
 
 
     <!-- 配置自定义Realm -->
-     <bean id="myRealm" class="com.crossoverJie.shiro.MyRealm"/>
+     <bean id="myRealm" class="com.sinotopia.shiro.MyRealm"/>
 
     <!-- 安全管理器 -->
      <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -201,31 +201,31 @@
     </bean>
 
     <!-- cache配置 -->
-    <bean id="methodCacheInterceptor" class="com.crossoverJie.intercept.MethodCacheInterceptor">
+    <bean id="methodCacheInterceptor" class="com.sinotopia.intercept.MethodCacheInterceptor">
         <property name="redisUtil" ref="redisUtil"/>
     </bean>
-    <bean id="redisUtil" class="com.crossoverJie.util.RedisUtil">
+    <bean id="redisUtil" class="com.sinotopia.util.RedisUtil">
         <property name="redisTemplate" ref="redisTemplate"/>
     </bean>
 
 
-    <bean id="dataSourceExchange" class="com.crossoverJie.util.DataSourceExchange"/>
+    <bean id="dataSourceExchange" class="com.sinotopia.util.DataSourceExchange"/>
     <!--配置切面拦截方法 -->
     <aop:config>
         <!--将com.crossoverJie.service包下的所有select开头的方法加入拦截
         去掉select则加入所有方法
         -->
         <aop:pointcut id="controllerMethodPointcut" expression="
-        execution(* com.crossoverJie.service.*.select*(..))"/>
+        execution(* com.sinotopia.service.*.select*(..))"/>
 
         <aop:pointcut id="selectMethodPointcut" expression="
-        execution(* com.crossoverJie.dao..*Mapper.select*(..))"/>
+        execution(* com.sinotopia.dao..*Mapper.select*(..))"/>
 
         <aop:advisor advice-ref="methodCacheInterceptor" pointcut-ref="controllerMethodPointcut"/>
 
         <!--所有数据库操作的方法加入切面-->
         <aop:aspect ref="dataSourceExchange">
-            <aop:pointcut id="dataSourcePointcut" expression="execution(* com.crossoverJie.service.*.*(..))"/>
+            <aop:pointcut id="dataSourcePointcut" expression="execution(* com.sinotopia.service.*.*(..))"/>
             <aop:before pointcut-ref="dataSourcePointcut" method="before"/>
             <aop:after pointcut-ref="dataSourcePointcut" method="after"/>
         </aop:aspect>

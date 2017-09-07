@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.crossoverJie.dao.DatasourceMapper">
-    <resultMap id="BaseResultMap" type="com.crossoverJie.pojo.Datasource">
+<mapper namespace="com.sinotopia.dao.DatasourceMapper">
+    <resultMap id="BaseResultMap" type="com.sinotopia.pojo.Datasource">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
     </resultMap>
@@ -68,7 +68,7 @@
     <sql id="Base_Column_List">
         id, name
     </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.crossoverJie.pojo.DatasourceExample">
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sinotopia.pojo.DatasourceExample">
         select
         <if test="distinct">
             distinct
@@ -92,17 +92,17 @@
     delete from datasource
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="com.crossoverJie.pojo.DatasourceExample">
+    <delete id="deleteByExample" parameterType="com.sinotopia.pojo.DatasourceExample">
         delete from datasource
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.crossoverJie.pojo.Datasource">
+    <insert id="insert" parameterType="com.sinotopia.pojo.Datasource">
         insert into datasource (id, name)
         values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
     </insert>
-    <insert id="insertSelective" parameterType="com.crossoverJie.pojo.Datasource">
+    <insert id="insertSelective" parameterType="com.sinotopia.pojo.Datasource">
         insert into datasource
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -121,7 +121,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.crossoverJie.pojo.DatasourceExample" resultType="java.lang.Integer">
+    <select id="countByExample" parameterType="com.sinotopia.pojo.DatasourceExample" resultType="java.lang.Integer">
         select count(*) from datasource
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -149,7 +149,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.crossoverJie.pojo.Datasource">
+    <update id="updateByPrimaryKeySelective" parameterType="com.sinotopia.pojo.Datasource">
         update datasource
         <set>
             <if test="name != null">
@@ -158,7 +158,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.crossoverJie.pojo.Datasource">
+    <update id="updateByPrimaryKey" parameterType="com.sinotopia.pojo.Datasource">
     update datasource
     set name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

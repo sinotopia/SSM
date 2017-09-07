@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.crossoverJie.dao.ContentLogMapper">
-    <resultMap id="BaseResultMap" type="com.crossoverJie.pojo.ContentLog">
+<mapper namespace="com.sinotopia.dao.ContentLogMapper">
+    <resultMap id="BaseResultMap" type="com.sinotopia.pojo.ContentLog">
         <id column="log_id" property="logId" jdbcType="INTEGER"/>
         <result column="contentid" property="contentId" jdbcType="INTEGER"/>
         <result column="contentName" property="contentname" jdbcType="VARCHAR"/>
@@ -71,7 +71,7 @@
     <sql id="Base_Column_List">
     log_id, contentId, contentName, content, createDate
   </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.crossoverJie.pojo.ContentLogExample">
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sinotopia.pojo.ContentLogExample">
         select
         <if test="distinct">
             distinct
@@ -95,19 +95,19 @@
     delete from content_log
     where log_id = #{logId,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="com.crossoverJie.pojo.ContentLogExample">
+    <delete id="deleteByExample" parameterType="com.sinotopia.pojo.ContentLogExample">
         delete from content_log
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.crossoverJie.pojo.ContentLog">
+    <insert id="insert" parameterType="com.sinotopia.pojo.ContentLog">
     insert into content_log (log_id, contentId, contentName, 
       content, createDate)
     values (#{logId,jdbcType=INTEGER}, #{contentid,jdbcType=INTEGER}, #{contentname,jdbcType=VARCHAR}, 
       #{content,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.crossoverJie.pojo.ContentLog">
+    <insert id="insertSelective" parameterType="com.sinotopia.pojo.ContentLog">
         insert into content_log
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="logId != null">
@@ -144,7 +144,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.crossoverJie.pojo.ContentLogExample" resultType="java.lang.Integer">
+    <select id="countByExample" parameterType="com.sinotopia.pojo.ContentLogExample" resultType="java.lang.Integer">
         select count(*) from content_log
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -184,7 +184,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.crossoverJie.pojo.ContentLog">
+    <update id="updateByPrimaryKeySelective" parameterType="com.sinotopia.pojo.ContentLog">
         update content_log
         <set>
             <if test="contentid != null">
@@ -202,7 +202,7 @@
         </set>
         where log_id = #{logId,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.crossoverJie.pojo.ContentLog">
+    <update id="updateByPrimaryKey" parameterType="com.sinotopia.pojo.ContentLog">
     update content_log
     set contentId = #{contentid,jdbcType=INTEGER},
       contentName = #{contentname,jdbcType=VARCHAR},

@@ -17,7 +17,7 @@
 
 
     <!-- 自动扫描 -->
-    <context:component-scan base-package="com.crossoverJie.api.dubbo" />
+    <context:component-scan base-package="com.sinotopia.api.dubbo" />
     <!-- 引入配置文件 -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -89,7 +89,7 @@
     </bean>
 
 
-    <bean id="dataSource" class="com.crossoverJie.api.dubbo.util.DynamicDataSource">
+    <bean id="dataSource" class="com.sinotopia.api.dubbo.util.DynamicDataSource">
         <property name="targetDataSources">
             <map key-type="java.lang.String">
                 <entry key="ssm1DataSource" value-ref="ssm1DataSource"/>
@@ -114,7 +114,7 @@
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.crossoverJie.api.dubbo.dao" />
+        <property name="basePackage" value="com.sinotopia.api.dubbo.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
 
@@ -128,13 +128,13 @@
 
 
 
-    <bean id="dataSourceExchange" class="com.crossoverJie.api.dubbo.util.DataSourceExchange"/>
+    <bean id="dataSourceExchange" class="com.sinotopia.api.dubbo.util.DataSourceExchange"/>
     <!--配置切面拦截方法 -->
     <aop:config proxy-target-class="false">
 
         <!--所有数据库操作的方法加入切面-->
         <aop:aspect ref="dataSourceExchange">
-            <aop:pointcut id="dataSourcePointcut" expression="execution(* com.crossoverJie.api.dubbo.service.*.*(..))"/>
+            <aop:pointcut id="dataSourcePointcut" expression="execution(* com.sinotopia.api.dubbo.service.*.*(..))"/>
             <aop:before pointcut-ref="dataSourcePointcut" method="before"/>
             <aop:after pointcut-ref="dataSourcePointcut" method="after"/>
         </aop:aspect>

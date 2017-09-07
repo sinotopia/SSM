@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.crossoverJie.api.dubbo.dao.T_userDao" >
-    <resultMap id="BaseResultMap" type="com.crossoverJie.api.dubbo.pojo.T_user" >
+<mapper namespace="com.sinotopia.api.dubbo.dao.T_userDao">
+    <resultMap id="BaseResultMap" type="com.sinotopia.api.dubbo.pojo.T_user">
         <result property="id" column="id"/>
         <result property="userName" column="userName"/>
         <result property="password" column="password"/>
         <result property="roleId" column="roleId"/>
     </resultMap>
-    <sql id="Base_Column_List" >
+    <sql id="Base_Column_List">
         id, username, password,roleId
     </sql>
 
     <select id="findUserByUsername" parameterType="String" resultMap="BaseResultMap">
-        select <include refid="Base_Column_List"/>
+        select
+        <include refid="Base_Column_List"/>
         from t_user where userName=#{userName}
     </select>
 
@@ -25,9 +26,9 @@
         where u.roleId=r.id and p.roleId=r.id and u.userName=#{userName}
     </select>
 
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         from t_user
         where id = #{userid,jdbcType=INTEGER}
     </select>

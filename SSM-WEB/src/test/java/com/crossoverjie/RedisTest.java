@@ -1,13 +1,13 @@
 package com.crossoverjie;
 
 import com.alibaba.fastjson.JSON;
-import com.crossoverJie.dao.RediscontentMapper;
-import com.crossoverJie.pojo.Content;
-import com.crossoverJie.pojo.Rediscontent;
-import com.crossoverJie.service.ContentService;
-import com.crossoverJie.service.IUserService;
-import com.crossoverJie.service.RediscontentService;
-import com.crossoverJie.util.PageEntity;
+import com.sinotopia.dao.RediscontentMapper;
+import com.sinotopia.pojo.Content;
+import com.sinotopia.pojo.Rediscontent;
+import com.sinotopia.service.ContentService;
+import com.sinotopia.service.IUserService;
+import com.sinotopia.service.RediscontentService;
+import com.sinotopia.util.PageEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

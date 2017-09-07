@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.crossoverJie.dao.PriceVersionMapper" >
-  <resultMap id="BaseResultMap" type="com.crossoverJie.pojo.PriceVersion" >
+<mapper namespace="com.sinotopia.dao.PriceVersionMapper" >
+  <resultMap id="BaseResultMap" type="com.sinotopia.pojo.PriceVersion" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="total" property="total" jdbcType="DECIMAL" />
     <result column="front" property="front" jdbcType="DECIMAL" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List" >
     id, total, front, end, version
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.crossoverJie.pojo.PriceVersionExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sinotopia.pojo.PriceVersionExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,19 +93,19 @@
     delete from price_version
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.crossoverJie.pojo.PriceVersionExample" >
+  <delete id="deleteByExample" parameterType="com.sinotopia.pojo.PriceVersionExample" >
     delete from price_version
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.crossoverJie.pojo.PriceVersion" >
+  <insert id="insert" parameterType="com.sinotopia.pojo.PriceVersion" >
     insert into price_version (id, total, front, 
       end, version)
     values (#{id,jdbcType=INTEGER}, #{total,jdbcType=DECIMAL}, #{front,jdbcType=DECIMAL}, 
       #{end,jdbcType=DECIMAL}, #{version,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.crossoverJie.pojo.PriceVersion" >
+  <insert id="insertSelective" parameterType="com.sinotopia.pojo.PriceVersion" >
     insert into price_version
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.crossoverJie.pojo.PriceVersionExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.sinotopia.pojo.PriceVersionExample" resultType="java.lang.Integer" >
     select count(*) from price_version
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.crossoverJie.pojo.PriceVersion" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinotopia.pojo.PriceVersion" >
     update price_version
     <set >
       <if test="total != null" >
@@ -200,7 +200,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.crossoverJie.pojo.PriceVersion" >
+  <update id="updateByPrimaryKey" parameterType="com.sinotopia.pojo.PriceVersion" >
     update price_version
     set total = #{total,jdbcType=DECIMAL},
       front = #{front,jdbcType=DECIMAL},
@@ -209,7 +209,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <update id="updateByVersion" parameterType="com.crossoverJie.pojo.PriceVersion">
+  <update id="updateByVersion" parameterType="com.sinotopia.pojo.PriceVersion">
     UPDATE price_version
     SET front = #{front,jdbcType=DECIMAL},
         version= version + 1

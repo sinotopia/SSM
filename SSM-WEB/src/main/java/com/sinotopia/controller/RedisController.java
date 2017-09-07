@@ -1,0 +1,99 @@
+package com.sinotopia.controller;
+
+import com.sinotopia.dao.PriceMapper;
+import com.sinotopia.dao.RediscontentMapper;
+import com.sinotopia.enums.StatusEnum;
+import com.sinotopia.pojo.Rediscontent;
+import com.sinotopia.req.RedisContentReq;
+import com.sinotopia.request.anotation.CheckReqNo;
+import com.sinotopia.res.BaseResponse;
+import com.sinotopia.service.RediscontentService;
+import com.sinotopia.util.CommonUtil;
+import com.sinotopia.util.PageEntity;
+import com.sinotopia.util.ThreadPoolConfig;
+import com.sinotopia.vo.NULLBody;
+import com.github.pagehelper.PageHelper;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+
+
+@Controller
+@RequestMapping("/redis")
+public class RedisController {
+
+    private static Logger logger = LoggerFactory.getLogger(RedisController.class);
+
+    @Autowired
+    private RediscontentService rediscontentService;
+
+    @Autowired
+    private PriceMapper priceMapper ;
+
+    @Autowired
+    private RediscontentMapper rediscontentMapper;
+
+    @Autowired
+    private ThreadPoolConfig config ;
+
+    @RequestMapping("/redis_list")
+    public void club_list(HttpServletResponse response,
+                          @RequestParam(value = "page", defaultValue = "0") int page,
+                          @RequestParam(value = "pageSize", defaultValue = "0") int pageSize) {
+        JSONObject jsonObject = new JSONObject();
+        JSONObject jo = new JSONObject();
+        try {
+            JSONArray ja = new JSONArray();
+            PageHelper.startPage(1, 10);
+            PageEntity<Rediscontent> rediscontentPageEntity = rediscontentService.selectByPage(page, pageSize);
+            for (Rediscontent rediscontent : rediscontentPageEntity.getList()) {
+                JSONObject jo1 = new JSONObject();
+                jo1.put("rediscontent", rediscontent);
+                ja.add(jo1);
+            }
+            jo.put("redisContents", ja);
+            jo.put("count", rediscontentPageEntity.getCount());
+            jsonObject = CommonUtil.parseJson("1", "成功", jo);
+
+        } catch (Exception e) {
+            jsonObject = CommonUtil.parseJson("2", "操作异常", "");
+            logger.error(e.getMessage(), e);
+        }
+        //构建返回
+        CommonUtil.responseBuildJson(response, jsonObject);
+    }
+
+    @CheckReqNo
+    @RequestMapping(value = "/createRedisContent",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponse<NULLBody> createRedisContent(@RequestBody RedisContentReq redisContentReq){
+        BaseResponse<NULLBody> response = new BaseResponse<NULLBody>() ;
+
+        Rediscontent rediscontent = new Rediscontent() ;
+        try {
+            CommonUtil.setLogValueModelToModel(redisContentReq,rediscontent);
+            rediscontentMapper.insertSelective(rediscontent) ;
+            response.setReqNo(redisContentReq.getReqNo());
+            response.setCode(StatusEnum.SUCCESS.getCode());
+            response.setMessage(StatusEnum.SUCCESS.getMessage());
+        }catch (Exception e){
+            logger.error("system error",e);
+            response.setReqNo(response.getReqNo());
+            response.setCode(StatusEnum.FAIL.getCode());
+            response.setMessage(StatusEnum.FAIL.getMessage());
+        }
+
+        return response ;
+
+    }
+
+
+
+
+}

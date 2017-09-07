@@ -15,11 +15,11 @@
         <jdbcConnection
                 connectionURL="jdbc:mysql://127.0.0.1:3306/ssm?characterEncoding=utf8"
                 driverClass="com.mysql.jdbc.Driver" password="tiger" userId="root"/>
-        <javaModelGenerator targetPackage="com.crossoverJie.pojo"
+        <javaModelGenerator targetPackage="com.sinotopia.pojo"
                             targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="com.crossoverJie.dao"
+        <sqlMapGenerator targetPackage="com.sinotopia.dao"
                          targetProject="src/main/resources/mapping"/>
-        <javaClientGenerator targetPackage="com.crossoverJie.dao"
+        <javaClientGenerator targetPackage="com.sinotopia.dao"
                              targetProject="src/main/java" type="XMLMAPPER"/>
 
         <table schema="ssm" tableName="content">
@@ -37,11 +37,11 @@
             <jdbcConnection
                     connectionURL="jdbc:mysql://127.0.0.1:3306/ssm2?characterEncoding=utf8"
                     driverClass="com.mysql.jdbc.Driver" password="tiger" userId="root"/>
-            <javaModelGenerator targetPackage="com.crossoverJie.pojo"
+            <javaModelGenerator targetPackacom.sinotopiarJie.pojo"
                                 targetProject="src/main/java"/>
-            <sqlMapGenerator targetPackage="com.crossoverJie.dao"
+            <sqlMapGenerator targetPackacom.sinotopiarJie.dao"
                              targetProject="src/main/resources/mapping"/>
-            <javaClientGenerator targetPackage="com.crossoverJie.dao"
+            <javaClientGenerator targetPackacom.sinotopiarJie.dao"
                                  targetProject="src/main/java" type="XMLMAPPER"/>
 
             <table schema="ssm" tableName="datasource">

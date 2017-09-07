@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.crossoverJie.dao.T_userDao" >
-    <resultMap id="BaseResultMap" type="com.crossoverJie.pojo.T_user" >
+<mapper namespace="com.sinotopia.dao.T_userDao" >
+    <resultMap id="BaseResultMap" type="com.sinotopia.pojo.T_user" >
         <result property="id" column="id"/>
         <result property="userName" column="userName"/>
         <result property="password" column="password"/>

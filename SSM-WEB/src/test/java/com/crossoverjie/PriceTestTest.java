@@ -1,8 +1,8 @@
 package com.crossoverjie;
 
 import com.alibaba.fastjson.JSON;
-import com.crossoverJie.dao.PriceMapper;
-import com.crossoverJie.pojo.Price;
+import com.sinotopia.dao.PriceMapper;
+import com.sinotopia.pojo.Price;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

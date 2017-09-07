@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <context:component-scan base-package="com.crossoverJie.api.controller">
+    <context:component-scan base-package="com.sinotopia.api.controller">
         <context:include-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller" />
         <context:include-filter type="annotation"
@@ -28,22 +28,22 @@
     </bean>
 
     <!--dubbo服务暴露为http服务-->
-    <bean class="com.crossoverJie.dubbo.http.conf.HttpProviderConf">
+    <bean class="com.sinotopia.dubbo.http.conf.HttpProviderConf">
         <property name="usePackage">
             <list>
                 <!--需要暴露服务的接口包名，可多个-->
-                <value>com.crossoverJie.api</value>
+                <value>com.sinotopia.api</value>
             </list>
         </property>
     </bean>
     <!--扫描暴露包-->
-    <context:component-scan base-package="com.crossoverJie.dubbo.http"/>
+    <context:component-scan base-package="com.sinotopia.dubbo.http"/>
 
     <!--处理静态资源-->
     <mvc:default-servlet-handler />
 
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-    <!--<context:component-scan base-package="com.crossoverJie.controller"/>-->
+    <!--<context:component-scan base-packacom.sinotopiarJie.controller"/>-->
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
     <!--<bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
@@ -92,7 +92,7 @@
 
     <!-- 方法拦截器（拦截Controller包中的所有被RequestMapping注解的方法） MethodInterceptor -->
     <!--    <aop:config proxy-target-class="true">
-            <aop:pointcut id="controllerMethodPointcut" expression="execution(* com.crossoverJie.controller..*(..)) and
+            <aop:pointcut id="controllerMethodPointcut" expression="executiocom.sinotopiarJie.controller..*(..)) and
             @annotation(org.springframework.web.bind.annotation.RequestMapping) .contentService*"/>
 
             <aop:advisor advice-ref="methodCacheInterceptor" pointcut-ref="controllerMethodPointcut"/>
@@ -108,7 +108,7 @@
             <mvc:mapping path="/function/**"/>
             <mvc:mapping path="/news/**"/>
             <mvc:mapping path="/img/**"/>
-            <bean class="com.crossoverJie.intercept.Intercept"></bean>
+            <bean clacom.sinotopiarJie.intercept.Intercept"></bean>
         </mvc:interceptor>
     </mvc:interceptors>-->
 

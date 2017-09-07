@@ -1,17 +1,15 @@
 package com.crossoverjie.service.ssmone;
 
-import com.crossoverJie.pojo.Content;
-import com.crossoverJie.pojo.ContentLog;
-import com.crossoverJie.service.ContentLogService;
-import com.crossoverJie.service.ContentService;
-import com.crossoverJie.util.CommonUtil;
+import com.sinotopia.pojo.Content;
+import com.sinotopia.pojo.ContentLog;
+import com.sinotopia.service.ContentLogService;
+import com.sinotopia.service.ContentService;
+import com.sinotopia.util.CommonUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import static org.junit.Assert.*;
 
 /**
  * Function:

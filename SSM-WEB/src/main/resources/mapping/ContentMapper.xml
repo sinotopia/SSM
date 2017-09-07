@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.crossoverJie.dao.ContentDao" >
-    <resultMap id="BaseResultMap" type="com.crossoverJie.pojo.Content" >
+<mapper namespace="com.sinotopia.dao.ContentDao" >
+    <resultMap id="BaseResultMap" type="com.sinotopia.pojo.Content" >
         <id column="contentId" property="contentid" jdbcType="INTEGER"/>
         <result property="contentname" column="contentname"/>
         <result property="content" column="content"/>
@@ -17,7 +17,7 @@
         from content
     </select>
 
-    <insert id="insertSelective" parameterType="com.crossoverJie.pojo.Content" >
+    <insert id="insertSelective" parameterType="com.sinotopia.pojo.Content" >
         insert into content
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="contentid != null">
